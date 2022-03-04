@@ -1,0 +1,29 @@
+
+<div *ngIf="dataset">
+    <h2>{{dataset[0].name}} Details</h2>
+    <div><span>id: </span>{{dataset[0].iddataset}}</div>
+    <div>
+        <label for="dataset-name">Name: </label>
+        <input id="dataset-name" [(ngModel)]="dataset[0].name" placeholder="name">
+    </div>
+    <div>
+        <label for="dataset-description">Description: </label>
+        <input id="dataset-description" [(ngModel)]="dataset[0].description" placeholder="name">
+    </div>
+    <div>
+        <label for="dataset-dimension">Dimension: </label>
+        <input id="dataset-dimension-width" [(ngModel)]="dataset[0].dimension.width" placeholder="name">
+        <input id="dataset-dimension-height" [(ngModel)]="dataset[0].dimension.height" placeholder="name">
+    </div>
+
+    <button type="button" (click)="goBack()">go back</button>
+    <button type="button" (click)="save()">save</button>
+
+    <image-upload></image-upload>
+    
+    <h2>Images in {{dataset[0].name}}</h2>
+    <images></images>
+    
+</div>
+
+
