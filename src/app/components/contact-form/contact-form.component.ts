@@ -35,7 +35,9 @@ export class ContactFormComponent implements OnInit {
 
     onSubmit(data: any) {
         this.submitted = true;
-
+        if(this.registerForm.controls.firstName.errors) {
+            console.log(this.registerForm.controls.firstName.errors.required);
+        }
         // stop here if form is invalid
         if (this.registerForm.invalid) {
             return;
@@ -44,7 +46,6 @@ export class ContactFormComponent implements OnInit {
         this.submittedAndValid = true;
         this.submitted = false;
         this.registerForm = this.getForm();
-        console.log('Submit: ', data);
         setTimeout(() => this.submittedAndValid = false, 5000);
         return;
     }
