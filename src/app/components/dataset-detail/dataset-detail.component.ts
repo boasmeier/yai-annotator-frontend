@@ -49,5 +49,4 @@ export class DatasetDetailComponent implements OnInit {
                 .subscribe(() => this.goBack());
         }
     }
-
 }

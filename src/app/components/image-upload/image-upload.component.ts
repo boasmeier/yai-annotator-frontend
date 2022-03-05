@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output} from '@angular/core';
 import { ImageService } from '../../services/image.service'
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -12,14 +12,20 @@ import { ImageSnippet } from '../../models/imageSnippet';
 })
 export class ImageUploadComponent {
     public selectedFile?: ImageSnippet;
+    public uploadedAndValid: boolean = false;
+
+    @Output() imageUploadEvent: EventEmitter<string> = new EventEmitter<string>();
 
     constructor(private route: ActivatedRoute, private imageService: ImageService) {
     }
 
     private onSuccess() {
         if (this.selectedFile !== undefined) {
+            this.uploadedAndValid = true;
             this.selectedFile.pending = false;
             this.selectedFile.status = 'ok';
+            this.imageUploadEvent.emit("Event: Image upload");
+            setTimeout(() => this.uploadedAndValid = false, 5000);
         }
     }
 
@@ -47,8 +53,6 @@ export class ImageUploadComponent {
                     this.onError();
                 })
         });
-
         reader.readAsDataURL(file);
     }
-
 }

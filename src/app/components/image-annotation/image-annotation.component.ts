@@ -36,9 +36,7 @@ export class ImageAnnotationComponent implements OnInit {
             const reader = new FileReader();
             reader.addEventListener('load', (event: any) => {
                 this.imageSnippet = event.target.result;
-                console.log(this.imageSnippet);
             });
-            console.log(typeof(blob));
             if(blob) {
                 reader.readAsDataURL(blob);
             }
