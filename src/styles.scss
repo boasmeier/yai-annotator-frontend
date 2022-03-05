@@ -1,5 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 /* Application-wide Styles */
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+html,
+body {
+    height: 100%;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+body {
+    margin: 2em;
+}
+body,
+input[type="text"],
+button {
+    color: #333;
+    font-family: Cambria, Georgia, serif;
+}
+
 h1 {
     color: #369;
     font-family: Arial, Helvetica, sans-serif;
@@ -11,19 +29,27 @@ h3 {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
 }
-body {
-    margin: 2em;
-}
-body,
-input[type="text"],
-button {
+
+a:link {
     color: #333;
-    font-family: Cambria, Georgia, serif;
-}
-/* everywhere else */
-* {
-    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+a:visited {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+}
+a:active {
+    color: #333;
+    text-decoration: none;
+}
+
+.padding {
+    padding-top: 1rem;
+}
