@@ -6,6 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { MessageService } from './message.service';
 import { Dataset } from '../models/dataset';
+import { InsertDataset } from '../models/insertDataset';
 
 
 
@@ -49,11 +50,12 @@ export class DatasetService {
         );
     }
 
-    /** POST: add a new hero to the server */
-    addDataset(dataset: Dataset): Observable<Dataset> {
-        return this.http.post<Dataset>(this.datasetsUrl, dataset, this.httpOptions).pipe(
-            tap((newDataset: Dataset) => this.log(`added hero w/ id=${newDataset.iddataset}`)),
-            catchError(this.handleError<Dataset>('addHero'))
+    /** POST: add a new dataset to the server */
+    addDataset(dataset: InsertDataset): Observable<any> {
+        this.log(JSON.stringify(dataset));
+        return this.http.post<InsertDataset>(this.datasetsUrl, dataset, this.httpOptions).pipe(
+            tap((result: any) => this.log(`added dataset w/ id=${result.insertId}`)),
+            catchError(this.handleError<InsertDataset>('addDataset'))
         );
     }
 

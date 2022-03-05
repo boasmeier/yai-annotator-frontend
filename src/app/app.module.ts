@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +15,7 @@ import { DatasetDetailComponent } from './components/dataset-detail/dataset-deta
 import { ImagesComponent } from './components/images/images.component';
 import { ImageAnnotationComponent } from './components/image-annotation/image-annotation.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -31,7 +34,10 @@ import { ImageUploadComponent } from './components/image-upload/image-upload.com
         FormsModule,
         ReactiveFormsModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        MatTableModule,
+        MatPaginatorModule,
+        BrowserAnimationsModule 
     ],
     providers: [],
     bootstrap: [AppComponent]
