@@ -1,0 +1,30 @@
+<h1 class="d-flex justify-content-center padding">LOGIN</h1>
+<div style="padding-top:1em; padding-left: 40em; padding-right: 40em;">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+        <div>
+            <label>Email</label>
+            <input type="text" formControlName="username" class="form-control" />
+            <div *ngIf="submitted && registerForm.controls.username.errors" class="alert alert-warning">
+                <div *ngIf="registerForm.controls.username.errors.required">Email is required</div>
+                <div *ngIf="registerForm.controls.username.errors.email">Email must be a valid email address</div>
+            </div>
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" formControlName="password" class="form-control" />
+            <div *ngIf="submitted && registerForm.controls.password.errors" class="alert alert-warning">
+                <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>
+                <div *ngIf="registerForm.controls.password.errors.max">Password length should not exceed 200 characters.
+                </div>
+            </div>
+        </div>
+        <div class="padding">
+            <button class="btn btn-secondary mr-1">Login</button>
+        </div>
+        <div class="padding">
+            <div *ngIf="submittedAndValid" class="alert alert-success">
+                <div>Thanks for your message. We'll answer as soon as possible!</div>
+            </div>
+        </div>
+    </form>
+</div>

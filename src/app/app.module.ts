@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
@@ -17,6 +17,8 @@ import { ImageAnnotationComponent } from './components/image-annotation/image-an
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AnnotationsComponent } from './components/annotations/annotations.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './services/httpInterceptor';
 
 @NgModule({
     declarations: [
@@ -29,7 +31,8 @@ import { AnnotationsComponent } from './components/annotations/annotations.compo
         ImagesComponent,
         ImageAnnotationComponent,
         ImageUploadComponent,
-        AnnotationsComponent
+        AnnotationsComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
@@ -39,9 +42,11 @@ import { AnnotationsComponent } from './components/annotations/annotations.compo
         HttpClientModule,
         MatTableModule,
         MatPaginatorModule,
-        BrowserAnimationsModule 
+        BrowserAnimationsModule
     ],
-    providers: [],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

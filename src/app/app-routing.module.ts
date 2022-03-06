@@ -5,6 +5,7 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { DatasetsComponent } from './components/datasets/datasets.component';
 import { DatasetDetailComponent } from './components/dataset-detail/dataset-detail.component';
 import { ImageAnnotationComponent } from './components/image-annotation/image-annotation.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/contact', pathMatch: 'full' },
@@ -12,7 +13,8 @@ const routes: Routes = [
     { path: 'datasets', component: DatasetsComponent },
     { path: 'datasets/:iddataset', component: DatasetDetailComponent },
     { path: 'images/:idimage', component: ImageAnnotationComponent },
-    { path: '**', component: PageNotFoundComponent}
+    { path: 'login', component: LoginComponent },
+    { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
