@@ -1,5 +1,31 @@
-<h1>Works!!!!</h1>
-<div *ngIf="imageSnippet">
-    <img class="annotate-image" src="{{imageSnippet}}" />
+<div class="padding">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 order-lg-1">
+                <h1>Annotation Editor</h1>
+            </div>
+            <div class="col-lg-6 order-lg-2">
+                <div class="float-end">
+                    <button type="button" class="btn btn-danger mr-1" (click)="delete()">Delete </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <canvas #canvas></canvas>
 </div>
-<annotations></annotations>
+
+<!--
+<div *ngIf="imageSnippet">
+    <img class="annotate-image" src="{{imageSnippet.src}}" />
+</div>
+-->
+<annotations [newAnnotation]="newAnnotation" (annotationsFetchedEvent)="handleAnnotationsFetchedEvent($event)"></annotations>
+
+<div class="padding row">
+    <div class="">
+        <button type="button" class="btn btn-secondary float-end" (click)="goBack()">go back</button>
+    </div>
+    
+</div>
+

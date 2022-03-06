@@ -1,6 +1,6 @@
 import { Dimension } from './dimension';
 
-export interface Image {
+export interface MyImage {
     idimage: number;
     iddataset: number;
     originalDimension: Dimension;

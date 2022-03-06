@@ -5,6 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { MessageService } from './message.service';
 import { Annotation } from '../models/annotation';
+import { InsertAnnotation } from '../models/insertAnnotation';
 
 @Injectable({
     providedIn: 'root'
@@ -28,12 +29,30 @@ export class AnnotationService {
             );
     }
 
+    /** POST: add a new annotation to the server */
+    addAnnotation(annotation: InsertAnnotation): Observable<any> {
+        this.log(JSON.stringify(annotation));
+        return this.http.post<InsertAnnotation>(this.annotationsUrl, annotation, this.httpOptions).pipe(
+            tap((result: any) => this.log(`added annotation w/ id=${result.insertId}`)),
+            catchError(this.handleError<InsertAnnotation>('addAnnotation'))
+        );
+    }
+
     /** PUT: update the annotation on the server */
     updateAnnotation(annotation: Annotation): Observable<any> {
         const url = `${this.annotationsUrl}/${annotation.idannotation}`;
         return this.http.put<Annotation>(url, annotation, this.httpOptions).pipe(
             tap(_ => this.log(`updated annotation id=${annotation.idannotation}`)),
             catchError(this.handleError<any>('updateAnnotation'))
+        );
+    }
+
+    /** DELETE: delete the annotation from the server */
+    deleteAnnotation(id: number): Observable<any> {
+        const url = `${this.annotationsUrl}/${id}`;
+        return this.http.delete<Annotation>(url, this.httpOptions).pipe(
+            tap(_ => this.log(`deleted annotation id=${id}`)),
+            catchError(this.handleError<Annotation>('deleteAnnotation'))
         );
     }
 

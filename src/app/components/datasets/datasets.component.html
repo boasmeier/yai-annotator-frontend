@@ -35,7 +35,7 @@
                 <input type="text" formControlName="width" class="form-control" />
                 <div *ngIf="submitted && datasetForm.controls.width.errors" class="alert alert-warning">
                     <div *ngIf="datasetForm.controls.width.errors.required">Width is required</div>
-                    <div *ngIf="datasetForm.controls.width.errors.patter">Only numbers are allowed</div>
+                    <div *ngIf="datasetForm.controls.width.errors.pattern">Only numbers are allowed</div>
                 </div>
             </div>
             <div>

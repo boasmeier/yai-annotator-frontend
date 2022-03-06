@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { MessageService } from './message.service';
-import { Image } from '../models/image';
+import { MyImage } from '../models/image';
 
 @Injectable({
     providedIn: 'root'
@@ -21,20 +21,20 @@ export class ImageService {
     }
 
     /** GET images from the server */
-    public getImages(): Observable<Image[]> {
-        return this.http.get<Image[]>(this.imagesUrl)
+    public getImages(): Observable<MyImage[]> {
+        return this.http.get<MyImage[]>(this.imagesUrl)
             .pipe(
                 tap(_ => this.log('fetched images')),
-                catchError(this.handleError<Image[]>('getImages', []))
+                catchError(this.handleError<MyImage[]>('getImages', []))
             );
     }
 
     /** GET image by id. Will 404 if id not found */
-    public getImage(id: number): Observable<Image[]> {
+    public getImage(id: number): Observable<MyImage[]> {
         const url = `${this.imagesUrl}/${id}`;
-        return this.http.get<Image[]>(url).pipe(
+        return this.http.get<MyImage[]>(url).pipe(
             tap(_ => this.log(`fetched image id=${id}`)),
-            catchError(this.handleError<Image[]>(`getImage id=${id}`))
+            catchError(this.handleError<MyImage[]>(`getImage id=${id}`))
         );
     }
 
@@ -48,11 +48,11 @@ export class ImageService {
     }
 
     /** DELETE: delete the image from the server */
-    public deleteImage(id: number): Observable<Image> {
+    public deleteImage(id: number): Observable<MyImage> {
         const url = `${this.imagesUrl}/${id}`;
-        return this.http.delete<Image>(url, this.httpOptions).pipe(
+        return this.http.delete<MyImage>(url, this.httpOptions).pipe(
             tap(_ => this.log(`deleted image id=${id}`)),
-            catchError(this.handleError<Image>('deleteImage'))
+            catchError(this.handleError<MyImage>('deleteImage'))
         );
     }
 

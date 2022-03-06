@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { Image } from '../../models/image';
+import { MyImage } from '../../models/image';
 import { ImageService } from '../../services/image.service';
 import { MessageService } from '../../services/message.service';
 
@@ -13,13 +13,13 @@ import { MessageService } from '../../services/message.service';
     styleUrls: ['./images.component.scss']
 })
 export class ImagesComponent implements AfterViewInit {
-    images: Image[] = [];
-    selectedImage?: Image;
+    images: MyImage[] = [];
+    selectedImage?: MyImage;
     imageUploadActive: boolean;
 
     displayedColumns: string[] = ['idimage', 'name', 'mimetype', 'status'];
 
-    dataSource: MatTableDataSource<Image> = new MatTableDataSource<Image>();
+    dataSource: MatTableDataSource<MyImage> = new MatTableDataSource<MyImage>();
     @ViewChild(MatPaginator) paginator!: MatPaginator;
 
     constructor(private imageService: ImageService,
@@ -27,7 +27,7 @@ export class ImagesComponent implements AfterViewInit {
             this.imageUploadActive = false;
     }
 
-    onSelect(image: Image): void {
+    onSelect(image: MyImage): void {
         this.selectedImage = image;
         this.messageService.info(`DatasetDetailComponent: Selected image id=${image.idimage}`);
     }
@@ -40,12 +40,12 @@ export class ImagesComponent implements AfterViewInit {
         const iddataset = Number(this.route.snapshot.paramMap.get('iddataset'));
         this.imageService.getImages().subscribe(images => {
             this.images = images.filter(i => i.iddataset == iddataset);
-            this.dataSource = new MatTableDataSource<Image>(this.images);
+            this.dataSource = new MatTableDataSource<MyImage>(this.images);
             this.dataSource.paginator = this.paginator;
         });
     }
 
-    delete(image: Image): void {
+    delete(image: MyImage): void {
         this.images = this.images.filter(d => d !== image);
         this.imageService.deleteImage(image.idimage).subscribe();
     }
