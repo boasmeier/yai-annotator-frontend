@@ -16,6 +16,7 @@ import { ImagesComponent } from './components/images/images.component';
 import { ImageAnnotationComponent } from './components/image-annotation/image-annotation.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AnnotationsComponent } from './components/annotations/annotations.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         DatasetDetailComponent,
         ImagesComponent,
         ImageAnnotationComponent,
-        ImageUploadComponent
+        ImageUploadComponent,
+        AnnotationsComponent
     ],
     imports: [
         BrowserModule,

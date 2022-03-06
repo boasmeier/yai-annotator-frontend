@@ -1,0 +1,27 @@
+<div class="padding">
+    <h2>Annotations</h2>
+    <ul class="images">
+        <li *ngFor="let annotation of annotations; index as i;">
+            <div>
+                <span>id: </span>{{annotation.idannotation}}
+                <label [for]="'annotation' + i + '-object'">Object: </label>
+                <input type="text" [id]="'annotation' + i + '-object'" [(ngModel)]="annotations[i].object"
+                    placeholder="name">
+
+                <label [for]="'annotation' + i + '-point1'">Point1: </label>
+                <input [id]="'annotation' + i + '-point1-x'" [(ngModel)]="annotations[i].points[0].x"
+                    placeholder="name">
+                <input [id]="'annotation' + i + '-point1-y'" [(ngModel)]="annotations[i].points[0].y"
+                    placeholder="name">
+
+                <label [for]="'annotation' + i + '-point2'">Point2: </label>
+                <input [id]="'annotation' + i + '-point2-x'" [(ngModel)]="annotations[i].points[1].x"
+                    placeholder="name">
+                <input [id]="'annotation' + i + '-point2-y'" [(ngModel)]="annotations[i].points[1].y"
+                    placeholder="name">
+
+                <button type="button" class="btn btn-secondary" (click)="save(i)">save</button>
+            </div>
+        </li>
+    </ul>
+</div>

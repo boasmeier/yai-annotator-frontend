@@ -87,7 +87,7 @@ export class ImageService {
         };
     }
 
-    /** Log a DatasetService message with the MessageService */
+    /** Log a ImageService message with the MessageService */
     private log(message: string) {
         this.messageService.info(`ImageService: ${message}`);
     }
