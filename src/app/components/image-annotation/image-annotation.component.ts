@@ -35,7 +35,6 @@ export class ImageAnnotationComponent implements OnInit, AfterViewInit {
     constructor(
         private route: ActivatedRoute,
         private imageService: ImageService,
-        private annotationService: AnnotationService,
         private location: Location,
         private messageService: MessageService
     ) {
